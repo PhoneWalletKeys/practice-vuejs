@@ -6,22 +6,24 @@
     <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
     <script src="index.js" defer></script>
   </head>
+  <style>
+    .disabled {
+      color: lightgray
+    }
+  </style>
   <body>
     <h1>Hello from HTML!</h1>
-    <div id="app">
-      <ol>
-        <!--
-          Now we provide each todo-item with the todo object
-          it's representing, so that its content can be dynamic.
-          We also need to provide each component with a "key",
-          which will be explained later.
-        -->
-        <todo-item
-          v-for="item in groceryList"
-          v-bind:todo="item"
-          v-bind:key="item.id"
-        ></todo-item>
-      </ol>
+    <div id="app"> 
+      <h1>{{message}}</h1>
+      <h2>{{name}}</h2>
+      <button v-on:click="showInfo = !showInfo">Toggle!</button>
+      <p v-bind:class="{disabled: showInfo}">Extra Information!</p>
     </div>
+
+    <div v-for="fruit in fruits">
+      <li>{( fruit )}</li>
+    </div>
+    <input type="text" v-model="newFruit" />
+    <button v-on:click="addNewFruit()">Add that fruit</button>
   </body>
 </html>

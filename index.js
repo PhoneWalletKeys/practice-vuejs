@@ -1,18 +1,21 @@
 /* global Vue */
 
-Vue.component('todo-item', {
-  props: ['todo'],
-  template: '<li>{{ todo.text }}</li>'
-});
-
-
 var app = new Vue({
   el: "#app",
-  data: {
-    groceryList: [
-      { id: 0, text: 'Vegetables' },
-      { id: 1, text: 'Cheese' },
-      { id: 2, text: 'Whatever else humans are supposed to eat' }
-    ]
+  data: function () {
+    return {
+      message: "Hello from Javascript",
+      name: "Roman",
+      showInfo: false,
+      fruits: ["apple", "banana", "orange"],
+      newFruit: "",
+    };
   },
-});
+  methods: {
+    reverseMessage: function () {
+      this.message = this.message.split('').reverse().join('');
+    },
+    addNewFruit: function () {
+      this.fruits.push(this.newFruit);
+    }
+  }});  
